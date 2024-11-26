@@ -1,4 +1,4 @@
-using System.Collections;
+using System .Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
@@ -7,18 +7,19 @@ public class ExplosionManager : MonoBehaviour
 {
     public ExplosionForce explosionForce;
     public List<Particle3D> particles = new List<Particle3D>();
-    private float implosionTime;
+    private float timeElapsed;
     
     void Start()
     {
-        implosionTime = 0f;
+        timeElapsed = 0f;
         GetParticlesInRadius();
     }
 
     private void FixedUpdate()
     {
-        implosionTime += Time.deltaTime;
-        if(implosionTime < explosionForce.implosionDuration)
+        timeElapsed += Time.deltaTime;
+        explosionForce.setTime(timeElapsed);
+        if(timeElapsed < explosionForce.implosionDuration)
         {
             for(int i = 0; i < particles.Count; i++)
             {
@@ -26,9 +27,12 @@ public class ExplosionManager : MonoBehaviour
                     explosionForce.UpdateForce(particles[i]);
             }
         } 
-        else if(implosionTime > explosionForce.implosionDuration)
+        else if(timeElapsed < explosionForce.concussionDuration + explosionForce.implosionDuration)
         {
-
+            for (int i = 0; i < particles.Count; i++)
+            {
+                explosionForce.UpdateForce(particles[i]);
+            }
         }
     }
 

@@ -363,6 +363,8 @@
 "Assets/Scripts/Collision/PhysicsCollider.cs"
 "Assets/Scripts/Collision/PlaneCollider.cs"
 "Assets/Scripts/Collision/SphereCollider.cs"
+"Assets/Scripts/ExplosionManager.cs"
+"Assets/Scripts/ForceGenerators/ExplosionForce.cs"
 "Assets/Scripts/ForceGenerators/ForceGenerator.cs"
 "Assets/Scripts/ForceGenerators/ForceGenerator3D.cs"
 "Assets/Scripts/Integrator.cs"

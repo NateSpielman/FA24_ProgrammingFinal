@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExplosionForce : ForceGenerator3D
 {
@@ -21,11 +23,6 @@ public class ExplosionForce : ForceGenerator3D
     public float shockwaveThickness;
     public float peakConcussiveForce;
     public float concussionDuration;
-
-    [Header("Convection Chimney")]
-    public float peakConvectionForce;
-    public float chimneyRadius;
-    public float chimneyHeight;
 
     private float timeElapsed;
 
@@ -79,5 +76,34 @@ public class ExplosionForce : ForceGenerator3D
             return true;
         }
         return false;
+    }
+
+    public void setImplosionRadius(Slider slider)
+    {
+       implosionMaxRadius = slider.value;
+    }
+    public void setImplosionDuration(Slider slider)
+    {
+        implosionDuration = slider.value;
+    }
+    public void setImplosionForce(Slider slider)
+    {
+        implosionForce = slider.value;
+    }
+    public void setExplosionSpeed(Slider slider)
+    {
+        shockwaveSpeed = slider.value;
+    }
+    public void setExplosionThickness(Slider slider)
+    {
+        shockwaveThickness = slider.value;
+    }
+    public void setExplosionForce(Slider slider)
+    {
+        peakConcussiveForce = slider.value;
+    }
+    public void setExplosionDuration(Slider slider)
+    {
+        concussionDuration = slider.value;
     }
 }

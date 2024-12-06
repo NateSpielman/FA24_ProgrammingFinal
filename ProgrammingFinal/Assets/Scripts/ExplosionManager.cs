@@ -8,6 +8,7 @@ public class ExplosionManager : MonoBehaviour
     public ExplosionForce explosionForce;
     public List<Particle3D> particles = new List<Particle3D>();
     private float timeElapsed;
+    private bool isRunning = false;
     
     void Start()
     {
@@ -17,21 +18,24 @@ public class ExplosionManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        timeElapsed += Time.deltaTime;
-        explosionForce.setTime(timeElapsed);
-        if(timeElapsed < explosionForce.implosionDuration)
+        if (isRunning)
         {
-            for(int i = 0; i < particles.Count; i++)
+            timeElapsed += Time.deltaTime;
+            explosionForce.setTime(timeElapsed);
+            if (timeElapsed < explosionForce.implosionDuration)
             {
-                if (explosionForce.CheckRadius(particles[i]))
-                    explosionForce.UpdateForce(particles[i]);
+                for (int i = 0; i < particles.Count; i++)
+                {
+                    if (explosionForce.CheckRadius(particles[i]))
+                        explosionForce.UpdateForce(particles[i]);
+                }
             }
-        } 
-        else if(timeElapsed < explosionForce.concussionDuration + explosionForce.implosionDuration)
-        {
-            for (int i = 0; i < particles.Count; i++)
+            else if (timeElapsed < explosionForce.concussionDuration + explosionForce.implosionDuration)
             {
-                explosionForce.UpdateForce(particles[i]);
+                for (int i = 0; i < particles.Count; i++)
+                {
+                    explosionForce.UpdateForce(particles[i]);
+                }
             }
         }
     }
@@ -69,5 +73,11 @@ public class ExplosionManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RunExplosion()
+    {
+        isRunning = true;
+        timeElapsed = 0f;
     }
 }

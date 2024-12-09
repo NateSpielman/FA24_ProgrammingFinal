@@ -80,33 +80,33 @@ public class ExplosionForce : ForceGenerator3D
         return false;
     }
 
-    public void setImplosionRadius(Slider slider)
+    public void setImplosionRadius(TMP_InputField inputField)
     {
-       implosionMaxRadius = slider.value;
+       implosionMaxRadius = float.Parse(inputField.text);
     }
-    public void setImplosionDuration(Slider slider)
+    public void setImplosionDuration(TMP_InputField inputField)
     {
-        implosionDuration = slider.value;
+        implosionDuration = float.Parse(inputField.text);
     }
-    public void setImplosionForce(Slider slider)
+    public void setImplosionForce(TMP_InputField inputField)
     {
-        implosionForce = slider.value;
+        implosionForce = float.Parse(inputField.text);
     }
-    public void setExplosionSpeed(Slider slider)
+    public void setExplosionSpeed(TMP_InputField inputField)
     {
-        shockwaveSpeed = slider.value;
+        shockwaveSpeed = float.Parse(inputField.text);
     }
-    public void setExplosionThickness(Slider slider)
+    public void setExplosionThickness(TMP_InputField inputField)
     {
-        shockwaveThickness = slider.value;
+        shockwaveThickness = float.Parse(inputField.text);
     }
-    public void setExplosionForce(Slider slider)
+    public void setExplosionForce(TMP_InputField inputField)
     {
-        peakConcussiveForce = slider.value;
+        peakConcussiveForce = float.Parse(inputField.text);
     }
-    public void setExplosionDuration(Slider slider)
+    public void setExplosionDuration(TMP_InputField inputField)
     {
-        concussionDuration = slider.value;
+        concussionDuration = float.Parse(inputField.text);
     }
 
     //set force

@@ -13,7 +13,7 @@ public class ExplosionManager : MonoBehaviour
     void Start()
     {
         timeElapsed = 0f;
-        GetParticlesInRadius();
+        GetParticles();
     }
 
     private void FixedUpdate()
@@ -40,38 +40,12 @@ public class ExplosionManager : MonoBehaviour
         }
     }
 
-
-    void Update()
+    private void GetParticles()
     {
-        
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(explosionForce.detonation, explosionForce.implosionMaxRadius);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(explosionForce.detonation, explosionForce.implosionMinRadius);
-    }
-
-    private void GetParticlesInRadius()
-    {
-        Sphere[] spheres = FindObjectsOfType<Sphere>();
-        for (int i = 0; i < spheres.Length; i++)
+        Particle3D[] particlesInScene = FindObjectsOfType<Particle3D>();
+        foreach (Particle3D particle in particlesInScene)
         {
-            Sphere s1 = spheres[i];
-            if(s1.GetComponent<Particle3D>() != null)
-            {
-                Vector3 s2ToS1 = s1.Center - explosionForce.detonation;
-                float dist = s2ToS1.magnitude;
-                float sumOfRadii = (s1.Radius + explosionForce.implosionMaxRadius);
-                float penetration = sumOfRadii - dist;
-
-                if (penetration > 0)
-                {
-                    particles.Add(s1.GetComponent<Particle3D>());
-                }
-            }
+            particles.Add(particle);
         }
     }
 

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class ExplosionForce : ForceGenerator3D
 {
+    //Setting all the values from what is entered in the UI
     [Header("Implosion")]
     //Location of detonation
     public Vector3 detonation;
@@ -80,6 +81,7 @@ public class ExplosionForce : ForceGenerator3D
         return false;
     }
 
+    //These functions are all for setting values from the UI
     public void setImplosionRadius(TMP_InputField inputField)
     {
        implosionMaxRadius = float.Parse(inputField.text);

@@ -61,8 +61,6 @@ public static class CollisionDetection
 
         collisionFns[(int)Shape.Sphere, (int)Shape.Sphere] = TestSphereSphere;
         AddCollisionFns(Shape.Sphere, Shape.Plane, TestSpherePlane);
-
-        // TODO: Add additional collider functions here
         AddCollisionFns(Shape.Sphere, Shape.AABB, TestSphereAABB);
         AddCollisionFns(Shape.Sphere, Shape.OBB, TestSphereOBB);
 
@@ -111,9 +109,6 @@ public static class CollisionDetection
         penetration = s.Radius - dist;
         normal = offset >= 0 ? p.Normal : -p.Normal;
     }
-
-    // TODO: YOUR CODE HERE
-    // Add new functions for sphere-AABB and sphere-OBB tests.
 
     public static void TestSphereAABB(PhysicsCollider shape1, PhysicsCollider shape2, out Vector3 normal, out float penetration)
     {
